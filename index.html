@@ -808,7 +808,11 @@
                     </div>
                 </div>
                 
-                <form class="contact-form" onsubmit="handleSubmit(event)">
+                <form class="contact-form" id="contact-form" action="https://formsubmit.co/constantpowerllc1@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="New Contact from Constant Power Website">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value=""><!-- will be set by JS -->
                     <div class="form-group">
                         <label for="name">Name *</label>
                         <input type="text" id="name" name="name" required>
@@ -861,17 +865,15 @@
             });
         });
 
-        // Form submission handler
-        function handleSubmit(event) {
-            event.preventDefault();
-            
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-            
-            // In a real implementation, this would send to a backend
-            alert(`Thank you, ${data.name}! We've received your message and will contact you at ${data.phone} shortly.`);
-            event.target.reset();
-        }
+        // Set the redirect URL to come back to the site after form submission
+        const form = document.getElementById('contact-form');
+        form.querySelector('input[name="_next"]').value = window.location.href;
+
+        form.addEventListener('submit', function() {
+            const submitBtn = form.querySelector('.submit-button');
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+        });
 
         // Add animation on scroll
         const observerOptions = {

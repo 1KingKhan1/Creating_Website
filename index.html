@@ -808,11 +808,10 @@
                     </div>
                 </div>
                 
-                <form class="contact-form" id="contact-form" action="https://formsubmit.co/constantpowerllc1@gmail.com" method="POST">
-                    <input type="hidden" name="_subject" value="New Contact from Constant Power Website">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value=""><!-- will be set by JS -->
+                <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="00838ac2-40f9-4830-ba4b-67cae6a4a0a7">
+                    <input type="hidden" name="subject" value="New Contact from Constant Power Website">
+                    <input type="hidden" name="redirect" value="https://1kingkhan1.github.io/Creating_Website/">
                     <div class="form-group">
                         <label for="name">Name *</label>
                         <input type="text" id="name" name="name" required>
@@ -865,10 +864,8 @@
             });
         });
 
-        // Set the redirect URL to come back to the site after form submission
+        // Form submission handler
         const form = document.getElementById('contact-form');
-        form.querySelector('input[name="_next"]').value = window.location.href;
-
         form.addEventListener('submit', function() {
             const submitBtn = form.querySelector('.submit-button');
             submitBtn.textContent = 'Sending...';
